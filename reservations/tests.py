@@ -1,17 +1,11 @@
-import csv
 import json
-import os
-import tempfile
 
-from django.core.files.uploadedfile import SimpleUploadedFile
 from django.db.models.functions import ExtractMonth
 from django.db.models.functions.datetime import ExtractYear
 from django.test import TestCase
 from django.urls import reverse
-from GuestReady.settings import BASE_DIR
 from rest_framework import status
 
-import reservations
 from reservations.constants import COMMISSIONS
 
 from .models import Location, Reservation
