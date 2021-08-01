@@ -8,6 +8,12 @@
     <link rel="stylesheet" href="{% static 'reservations/main.css' %}" />
   </head>
   <body style="padding-top: 30px; padding-left: 30px" class="background">
+    <div style="display: flex; justify-content: space-between; width: 60%; margin: 0 auto;">
+      <a href="{% url 'reservations:total_commission' %}" target="_blank"> Total commission </a>
+      <a href="{% url 'reservations:commission_per_month' %}" target="_blank">Commission per month</a>
+      <a href="{% url 'reservations:commission_by_city' %}" target="_blank">Commission by city</a>
+      <a href="{% url 'reservations:commission_for_city' city='london' %}" target="_blank">Commission for city</a>
+    </div>
     {% block content %}{% endblock %}
   </body>
 </html>

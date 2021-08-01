@@ -1,7 +1,5 @@
 from django.db.models.expressions import Case, When
 from django.db.models import Sum, F
-from django.db.models.fields import DecimalField, FloatField
-from django.db.models.functions import Cast
 
 
 CITIES = [

@@ -1,31 +1,46 @@
-{% extends "reservations/template.html" %}
+{% extends "reservations/template.html" %} {% block content %}
 
-{% block content %}
+<h1>Load your file</h1>
+<form
+  action="{% url 'reservations:load_csv' %}"
+  method="post"
+  enctype="multipart/form-data"
+>
+  {% csrf_token %}
+  <input
+    type="file"
+    title="Upload excel file"
+    name="guest_ready"
+    style="border: 1px solid black; padding: 5px"
+    required="required"
+    class="btn"
+  />
 
-    <h1>Load your file</h1>
-    <form action="{% url 'reservations:load_csv' %}" method="post" enctype="multipart/form-data">
-      {% csrf_token %}
-      <input type="file"
-        title="Upload excel file"
-        name="guest_ready"
-        style="border: 1px solid black; padding: 5px;"
-        required="required" class="btn"
-      >
-        
-      <p>
-      <input type="submit"
-        value="Upload"
-        style="border: 1px solid green; padding:5px; border-radius: 2px; cursor: pointer;" class="btn">
-    </form>
+  <p>
+    <input
+      type="submit"
+      value="Upload"
+      style="
+        border: 1px solid green;
+        padding: 5px;
+        border-radius: 2px;
+        cursor: pointer;
+      "
+      class="btn"
+    />
+  </p>
+</form>
 
-    <p></p>
-    <hr>
-
-    {% for row in excel_data %}
-        {% for cell in row %}
-            {{ cell }}&nbsp;&nbsp;
-        {% endfor %}
-        <br>
+<p></p>
+<hr />
+<table>
+  {% for row in excel_data %}
+  <tr>
+    {% for cell in row %}
+    <td>{{ cell }}</td>
     {% endfor %}
+  </tr>
+  {% endfor %}
+</table>
 
 {% endblock %}
